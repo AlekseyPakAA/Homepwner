@@ -11,11 +11,11 @@ import UIKit
 
 class ItemStore {
     
-    var Items = [Item]()
+    var items = [Item]()
     
     func createItem() -> Item {
-        let item = Item()
-        Items.append(item)
+        let item = Item(random: true)
+        items.append(item)
         return item
     }
     
