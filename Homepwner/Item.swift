@@ -34,7 +34,7 @@ class Item: NSObject {
             let rnoun = nouns[Int(index)]
         
             let rname = "\(radjective) \(rnoun)"
-            let rvalue = Int(arc4random_uniform(UInt32(100)))
+            let rvalue = Int(arc4random_uniform(UInt32(99))) + 1
             let rserialNumber = NSUUID().uuidString
         
             self.init(name: rname, serialNumber: rserialNumber, valueInDollars: rvalue)

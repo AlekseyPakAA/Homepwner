@@ -19,9 +19,14 @@ class ItemStore {
         return item
     }
     
-    init() {
-        for _ in 0..<5 {
-            createItem()
+    func moveItem(fromIndex: Int, toIndex: Int) {
+        if fromIndex == toIndex {
+            return
         }
+        
+        let item = items[fromIndex]
+        items.remove(at: fromIndex)
+        items.insert(item, at: toIndex)
     }
+    
 }
