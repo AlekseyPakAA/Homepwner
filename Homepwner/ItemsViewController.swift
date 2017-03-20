@@ -38,17 +38,27 @@ class ItemsViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
+        
+        cell.updateLabels()
         
         let item = itemsStore.items[indexPath.row]
-        cell.textLabel?.text = item.name;
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)";
+        
+        if  item.valueInDollars < 50 {
+            cell.valueLabel.textColor = UIColor.green
+        } else {
+            cell.valueLabel.textColor = UIColor.red
+        }
+        
+        cell.nameLabel.text = item.name;
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = "$\(item.valueInDollars)"
         
         return cell;
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 65
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -80,6 +90,9 @@ class ItemsViewController: UITableViewController {
         
         tableView.contentInset = inset
         tableView.scrollIndicatorInsets = inset
+        
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = 65
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -88,6 +101,17 @@ class ItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Remove"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowItem" {
+            if let index = tableView.indexPathForSelectedRow?.row {
+                let item = itemsStore.items[index]
+                
+                let detailViewController = segue.destination as! DetailController
+                detailViewController.item = item
+            }
+        }
     }
     
 }

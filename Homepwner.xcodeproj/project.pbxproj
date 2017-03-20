@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843DC4961E7EC9F90003036E /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DC4951E7EC9F90003036E /* ItemCell.swift */; };
+		84406BC51E805627004DFC8D /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84406BC41E805627004DFC8D /* DetailController.swift */; };
 		84F578A41E7B103F005C05B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F578A31E7B103F005C05B7 /* AppDelegate.swift */; };
 		84F578A91E7B103F005C05B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F578A71E7B103F005C05B7 /* Main.storyboard */; };
 		84F578AB1E7B103F005C05B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F578AA1E7B103F005C05B7 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		843DC4951E7EC9F90003036E /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		84406BC41E805627004DFC8D /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		84F578A01E7B103F005C05B7 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F578A31E7B103F005C05B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F578A81E7B103F005C05B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,12 +64,14 @@
 			children = (
 				84F578A31E7B103F005C05B7 /* AppDelegate.swift */,
 				84F578B51E7B19BF005C05B7 /* ItemsViewController.swift */,
+				84406BC41E805627004DFC8D /* DetailController.swift */,
 				84F578A71E7B103F005C05B7 /* Main.storyboard */,
 				84F578AA1E7B103F005C05B7 /* Assets.xcassets */,
 				84F578AC1E7B103F005C05B7 /* LaunchScreen.storyboard */,
 				84F578AF1E7B103F005C05B7 /* Info.plist */,
 				84F578B71E7B1C19005C05B7 /* Item.swift */,
 				84F578B91E7B2AB2005C05B7 /* ItemStore.swift */,
+				843DC4951E7EC9F90003036E /* ItemCell.swift */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -147,6 +153,8 @@
 				84F578B81E7B1C19005C05B7 /* Item.swift in Sources */,
 				84F578BA1E7B2AB2005C05B7 /* ItemStore.swift in Sources */,
 				84F578A41E7B103F005C05B7 /* AppDelegate.swift in Sources */,
+				84406BC51E805627004DFC8D /* DetailController.swift in Sources */,
+				843DC4961E7EC9F90003036E /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

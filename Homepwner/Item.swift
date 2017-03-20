@@ -13,13 +13,13 @@ class Item: NSObject {
     var name: String
     var valueInDollars: Int
     var serialNumber: String?
-    let dateCreted: NSDate
+    let dateCreted: Date
     
     init(name: String, serialNumber:String?, valueInDollars:Int) {
         self.name = name
         self.serialNumber = serialNumber
         self.valueInDollars = valueInDollars
-        self.dateCreted = NSDate()
+        self.dateCreted = Date()
     }
     
     convenience init(random: Bool = false) {
@@ -35,8 +35,7 @@ class Item: NSObject {
         
             let rname = "\(radjective) \(rnoun)"
             let rvalue = Int(arc4random_uniform(UInt32(99))) + 1
-            let rserialNumber = NSUUID().uuidString
-        
+            let rserialNumber = NSUUID().uuidString.components(separatedBy: "-").first
             self.init(name: rname, serialNumber: rserialNumber, valueInDollars: rvalue)
         } else {
             self.init(name: "", serialNumber: nil, valueInDollars: 0)
