@@ -9,14 +9,18 @@
 import Foundation
 import UIKit
 
-class DetailController: UIViewController {
+class DetailController: UIViewController , UITextFieldDelegate {
     
     @IBOutlet var nameField: UITextField!
     @IBOutlet var serialField: UITextField!
     @IBOutlet var valueField: UITextField!
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var dateButton: UIButton!
    
-    var item: Item!
+    var item: Item! {
+        didSet {
+            navigationItem.title = item.name
+        }
+    }
     
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -40,6 +44,39 @@ class DetailController: UIViewController {
         serialField.text = item.serialNumber
         
         valueField.text = numberFormatter.string(from: NSNumber.init(value: item.valueInDollars))
-        dateLabel.text  = dateFormatter.string(from: item.dateCreted)
+        dateButton.setTitle(dateFormatter.string(from: item.dateCreted), for: .normal)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
+        
+        item.name = nameField.text ?? ""
+        item.serialNumber = serialField.text
+        
+        
+        if let valueText = valueField.text
+            , let value = numberFormatter.number(from: valueText) {
+            item.valueInDollars = value.intValue
+        } else {
+            item.valueInDollars = 0
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDatePicker" {
+            let detailViewController = segue.destination as! DatePickerController
+            detailViewController.item = item
+        }
     }
 }

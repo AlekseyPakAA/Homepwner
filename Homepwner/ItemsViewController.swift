@@ -13,7 +13,13 @@ class ItemsViewController: UITableViewController {
     
     var itemsStore: ItemStore!
    
-    @IBAction func addItem (sender: UIButton) {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    @IBAction func addItem (_ sender: UIBarButtonItem) {
         let item = itemsStore.createItem();
         
         if let index = itemsStore.items.index(of: item) {
@@ -22,20 +28,9 @@ class ItemsViewController: UITableViewController {
         }
     }
     
-    @IBAction func editingMode (sender: UIButton) {
-        if isEditing {
-            sender.setTitle("Edit", for: .normal)
-            setEditing(false, animated: true)
-        } else {
-            sender.setTitle("Done", for: .normal)
-            setEditing(true, animated: true)
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemsStore.items.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
@@ -84,13 +79,6 @@ class ItemsViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        let paddingTop = UIApplication.shared.statusBarFrame.height;
-        
-        let inset = UIEdgeInsets(top: paddingTop, left: 0, bottom: 0, right: 0)
-        
-        tableView.contentInset = inset
-        tableView.scrollIndicatorInsets = inset
-        
         tableView.rowHeight = UITableViewAutomaticDimension;
         tableView.estimatedRowHeight = 65
     }
@@ -112,6 +100,10 @@ class ItemsViewController: UITableViewController {
                 detailViewController.item = item
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData();
     }
     
 }
