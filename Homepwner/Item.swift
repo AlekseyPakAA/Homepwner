@@ -14,6 +14,7 @@ class Item: NSObject {
     var valueInDollars: Int
     var serialNumber: String?
     var dateCreted: Date
+    var id = NSUUID().uuidString
     
     init(name: String, serialNumber:String?, valueInDollars:Int) {
         self.name = name

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84150C241E86E2660037AB44 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84150C231E86E2660037AB44 /* ImageStore.swift */; };
 		843DC4961E7EC9F90003036E /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DC4951E7EC9F90003036E /* ItemCell.swift */; };
 		84406BC51E805627004DFC8D /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84406BC41E805627004DFC8D /* DetailController.swift */; };
 		84EE7BA21E82FB59000149D4 /* MYTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE7BA11E82FB59000149D4 /* MYTextField.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84150C231E86E2660037AB44 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		843DC4951E7EC9F90003036E /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		84406BC41E805627004DFC8D /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		84EE7BA11E82FB59000149D4 /* MYTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYTextField.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				84F578B71E7B1C19005C05B7 /* Item.swift */,
 				84F578B91E7B2AB2005C05B7 /* ItemStore.swift */,
+				84150C231E86E2660037AB44 /* ImageStore.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84150C241E86E2660037AB44 /* ImageStore.swift in Sources */,
 				84F578B61E7B19BF005C05B7 /* ItemsViewController.swift in Sources */,
 				84EE7BA21E82FB59000149D4 /* MYTextField.swift in Sources */,
 				84F578B81E7B1C19005C05B7 /* Item.swift in Sources */,

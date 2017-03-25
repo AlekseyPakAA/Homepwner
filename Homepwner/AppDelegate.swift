@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let itemsStore = ItemStore()
-        
+        let imageStore = ImageStore()
         let navigationController = window!.rootViewController as! UINavigationController
         let itemsController = navigationController.topViewController as! ItemsViewController
         itemsController.itemsStore = itemsStore
-        
+        itemsController.imageStore = imageStore
         return true
     }
 
