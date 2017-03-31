@@ -94,24 +94,13 @@ class DetailController: UIViewController , UITextFieldDelegate,
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
-            
-            //I know it's ugly, but there is no solution for that challenge while we use cameraOverlayView.
-            //To solve that problem we should inherit UIImagePickerController and put our label/UIView directly on the camera view
-            if let cameraOverlayView = imagePicker.cameraOverlayView {
-                let crossHeirView = UILabel();
-                crossHeirView.translatesAutoresizingMaskIntoConstraints = false;
-                crossHeirView.font = UIFont.systemFont(ofSize: 17)
-                crossHeirView.text = "+"
-                crossHeirView.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).withAlphaComponent(0.5)
-                
-                cameraOverlayView.addSubview(crossHeirView)
-                
-                let centerX = crossHeirView.centerXAnchor.constraint(equalTo: cameraOverlayView.centerXAnchor)
-                let centerY = crossHeirView.centerYAnchor.constraint(equalTo: cameraOverlayView.centerYAnchor)
-                
-                centerX.isActive = true
-                centerY.isActive = true
-            }
+            let crosshair = UIButton(type: .contactAdd)
+            crosshair.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            crosshair.translatesAutoresizingMaskIntoConstraints = false
+            imagePicker.cameraOverlayView?.addSubview(crosshair)
+            imagePicker.cameraOverlayView?.isUserInteractionEnabled = false
+            crosshair.centerXAnchor.constraint(equalTo: (imagePicker.cameraOverlayView?.centerXAnchor)!).isActive = true
+            crosshair.centerYAnchor.constraint(equalTo: (imagePicker.cameraOverlayView?.centerYAnchor)!).isActive = true
         } else {
             imagePicker.sourceType = .photoLibrary
         }

@@ -13,6 +13,16 @@ class ItemStore {
     
     var items = [Item]()
     
+    let itemarchURL: URL = {
+        return  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("items.archive")
+    }()
+    
+    init() {
+        if let archItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemarchURL.path) as? [Item] {
+            items += archItems
+        }
+    }
+    
     func createItem() -> Item {
         let item = Item(random: true)
         items.append(item)
@@ -29,4 +39,7 @@ class ItemStore {
         items.insert(item, at: toIndex)
     }
     
+    func saveChanges() -> Bool {
+        return NSKeyedArchiver.archiveRootObject(items, toFile: itemarchURL.path)
+    }
 }
